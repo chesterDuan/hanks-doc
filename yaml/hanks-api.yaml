@@ -7,6 +7,12 @@ info:
     email: webber.larch@gmail.com
 host: '61.230.49.16:8080'
 basePath: /hanks-ap
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
 tags:
   - name: 電子柵欄操作
     description: Fence Controller
@@ -186,7 +192,7 @@ paths:
           description: OK
           schema:
             type: object
-  '/v1/user/{uid}/ring/{ringSN}/location':
+  /v1/user/{uid}/ring/{ringSN}/location:
     get:
       tags:
         - 定位操作
@@ -212,7 +218,9 @@ paths:
         '200':
           description: OK
           schema:
-            type: object
+            type: array
+            items:
+              $ref: '#/definitions/LocationReportDTO'
   '/v1/user/{uid}/ring/{ringSN}/profile':
     get:
       tags:
@@ -339,6 +347,44 @@ paths:
         '500':
           description: INTERNAL SERVICE ERROR
 definitions:
+  LocationReportDTO:
+    type: object
+    required:
+      - ring_sn
+      - cmd
+      - cmd_key
+      - longitude
+      - latitude
+      - timestamp
+      - type
+      - ring_response_code
+    properties:
+      ring_sn:
+        type: string
+        example: AAAAAAAAA
+        description: ring unique sn
+      cmd: 
+        type: integer
+        format: int32
+      cmd_key:
+        type: string
+      longitude:
+        type: number
+        format: double
+        example: 25.03
+        description: longitude
+      latitude:
+        type: number
+        format: double
+        example: 121.30
+        description: latitude
+      timestamp:
+        type: string
+        format: datetime
+      type:
+        type: string
+      ring_response_code:
+        type: string
   FenceDTO:
     type: object
     required:
