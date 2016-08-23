@@ -214,13 +214,35 @@ paths:
           description: ringSN
           required: true
           type: string
+        - name: count
+          in: query
+          type: integer
       responses:
         '200':
           description: OK
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/LocationReportDTO'
+            type: object
+            properties:
+              status_code: 
+                type: string
+                example: '000000'
+              data: 
+                type: array
+                items:
+                  $ref: '#/definitions/LocationReport'
+              message:
+                type: string
+        '401':
+          description: unauthorized
+          schema:
+            type: object
+            properties:
+              status_code: 
+                type: string
+                example: '000000'
+              error:
+                $ref: '#/definitions/Error'
+          
   '/v1/user/{uid}/ring/{ringSN}/profile':
     get:
       tags:
@@ -347,7 +369,7 @@ paths:
         '500':
           description: INTERNAL SERVICE ERROR
 definitions:
-  LocationReportDTO:
+  LocationReport:
     type: object
     required:
       - ring_sn
@@ -471,6 +493,15 @@ definitions:
         type: string
       ring_sn:
         type: string
+        
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      
   RingInfoDTO:
     type: object
     required:
