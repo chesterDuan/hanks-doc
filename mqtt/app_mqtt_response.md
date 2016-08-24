@@ -15,14 +15,29 @@ mqtt location messsage body
    
         {
             "data" : {
-                "ring_sn" : "ring_name" 
-                "cmd" : 1 
-                "cmd_key" : "1qazxsw22"   // 可以讓APP and ring 判別前後收到順序, 等和手環ODM討論過後, 再來決定.
-                "longitude" : 25.12312312      // Double
-                "latitude" :  26.12312         // Double
-                "timestamp" : "2002-10-02T15:00:00Z"    // String (RFC3339 normalize to UTC) => server get timestamp
-                "type" : "gps"                 // String(gps/rrc_indoor/rrc_outdoor)
-                "ring_response_code" : 0       // 1: 定位成功 / 0:定位失敗 => 定位失敗, 如手環有回傳訊息, 可是返回APP中, 其中某一環節.
+                "ring_sn" : "ring_sn", 
+                //Ring unique Id
+                
+                "cmd" : 1,
+                //接受指令種類（gps, fence..etc)
+                
+                "cmd_key" : "1qazxsw22",  
+                // 可以讓APP and ring 判別前後收到順序, 等和手環ODM討論過後, 再來決定.
+                
+                "longitude" : 25.12312, 
+                // Double
+                
+                "latitude" :  26.12312,         
+                // Double
+                
+                "timestamp" : "2002-10-02T15:00:00Z",  
+                // String (RFC3339 normalize to UTC) => server get timestamp
+                
+                "type" : "gps",                 
+                // String(gps/rrc_indoor/rrc_outdoor)
+                
+                "ring_response_code" : 0
+                // 1: 定位成功 / 0:定位失敗 => 定位失敗, 如手環有回傳訊息, 可是返回APP中, 其中某一環節.
             },
             "message" : "success" 
         }
@@ -31,8 +46,8 @@ mqtt location messsage body
      
         {
             "error" : {
-                  "err_code" : "server statusCode"
-                  "err_meaasge" : "xxxxfasdfasd"
+                  "err_code" : "server statusCode",
+                  "err_message" : "Something goes wrong!!"
             }
         }
 
@@ -48,7 +63,7 @@ mqtt location messsage body
               "fence_no" :          
               "timestamp" :     // String (RFC3339 normalize to UTC) => server get timestamp
               "ring_response_code" : 0       // 1: 定位成功 / 0:定位失敗 => 定位失敗, 如手環有回傳訊息, 可是返回APP中, 其中某一環節.
-          }
+          },
           "message" : "success" 
         }
   
@@ -56,8 +71,8 @@ mqtt location messsage body
     
         {
             "error" : {
-                "err_code" : "server statusCode"
-                "err_meaasge" : "xxxxfasdfasd"
+                "err_code" : "server statusCode",
+                "err_message" : "Something goes wrong!!"
             } 
         }
 
