@@ -5,26 +5,74 @@ info:
   contact:
     name: tonykuo
     email: webber.larch@gmail.com
-host: '61.230.49.16:8080'
+host: '61.228.216.211:8080'
 basePath: /hanks-ap
-schemes:
-  - http
-consumes:
-  - application/json
-produces:
-  - application/json
 tags:
   - name: 電子柵欄操作
     description: Fence Controller
   - name: 定位操作
     description: Location Controller
-  - name: 測試頁面
-    description: Hello Controller
-  - name: REST 基本操作
-    description: Hello Rest Controller
+  - name: 登入操作
+    description: Login Controll
   - name: 手環操作
     description: Ring Controll
 paths:
+  /v1/user/join:
+    post:
+      tags:
+        - 登入操作
+      summary: 新建用戶(待完成)
+      description: 新建用戶(待完成)
+      operationId: joinUserUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: debug
+          in: query
+          description: debug flag
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '400':
+          description: 待完成
+        '401':
+          description: 認證失敗
+        '500':
+          description: INTERNAL SERVICE ERROR
+  /v1/user/login:
+    post:
+      tags:
+        - 登入操作
+      summary: 登入(待完成)
+      description: 登入(待完成)
+      operationId: loginUserUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: debug
+          in: query
+          description: debug flag
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LoginDTO'
+        '400':
+          description: 待完成
+        '401':
+          description: 認證失敗
+        '500':
+          description: INTERNAL SERVICE ERROR
   '/v1/user/{uid}/ring/{ringSN}/fence':
     get:
       tags:
@@ -192,12 +240,12 @@ paths:
           description: OK
           schema:
             type: object
-  /v1/user/{uid}/ring/{ringSN}/location:
+  '/v1/user/{uid}/ring/{ringSN}/location':
     get:
       tags:
         - 定位操作
       summary: 取得過去軌跡資訊
-      description: get Location History
+      description: get Location History(待完成)
       operationId: getLocationHistoryUsingGET
       consumes:
         - application/json
@@ -214,35 +262,17 @@ paths:
           description: ringSN
           required: true
           type: string
-        - name: count
-          in: query
-          type: integer
       responses:
         '200':
           description: OK
           schema:
-            type: object
-            properties:
-              status_code: 
-                type: string
-                example: '000000'
-              data: 
-                type: array
-                items:
-                  $ref: '#/definitions/LocationReport'
-              message:
-                type: string
+            $ref: '#/definitions/LocationReportDTO'
+        '400':
+          description: Server Busy(Timeout) or Expired Action or Not yet received DR
         '401':
-          description: unauthorized
-          schema:
-            type: object
-            properties:
-              status_code: 
-                type: string
-                example: '000000'
-              error:
-                $ref: '#/definitions/Error'
-          
+          description: 認證失敗
+        '500':
+          description: INTERNAL SERVICE ERROR
   '/v1/user/{uid}/ring/{ringSN}/profile':
     get:
       tags:
@@ -257,12 +287,12 @@ paths:
       parameters:
         - name: uid
           in: path
-          description: user_id
+          description: uid
           required: true
           type: string
         - name: ringSN
           in: path
-          description: bracelet_id
+          description: ring_sn
           required: true
           type: string
       responses:
@@ -281,7 +311,7 @@ paths:
       tags:
         - 定位操作
       summary: '要求切換主動追蹤:OFF'
-      description: stop active mode
+      description: stop active mode(待完成)
       operationId: stopActiveModeUsingPOST
       consumes:
         - application/json
@@ -302,13 +332,19 @@ paths:
         '200':
           description: OK
           schema:
-            type: object
+            $ref: '#/definitions/ResponseSuccessDTO'
+        '400':
+          description: Server Busy(Timeout) or Expired Action or Not yet received DR
+        '401':
+          description: 認證失敗
+        '500':
+          description: INTERNAL SERVICE ERROR
   '/v1/user/{uid}/ring/{ringSN}/request/activemode/on':
     post:
       tags:
         - 定位操作
       summary: '要求切換主動追蹤:ON'
-      description: start active mode
+      description: start active mode(待完成)
       operationId: startActiveModeUsingPOST
       consumes:
         - application/json
@@ -329,13 +365,19 @@ paths:
         '200':
           description: OK
           schema:
-            type: object
+            $ref: '#/definitions/ResponseSuccessDTO'
+        '400':
+          description: Server Busy(Timeout) or Expired Action or Not yet received DR
+        '401':
+          description: 認證失敗
+        '500':
+          description: INTERNAL SERVICE ERROR
   '/v1/user/{uid}/ring/{ringSN}/request/gps':
     post:
       tags:
         - 定位操作
       summary: 即時定位(只會回一次)
-      description: get current position
+      description: get current position(可供測試)
       operationId: getCurrentPositionUsingPOST
       consumes:
         - application/json
@@ -363,65 +405,27 @@ paths:
           schema:
             $ref: '#/definitions/ResponseSuccessDTO'
         '400':
-          description: Server Busy(Timeout) or Expired Action
+          description: Server Busy(Timeout) or Expired Action or Not yet received DR
         '401':
           description: 認證失敗
         '500':
           description: INTERNAL SERVICE ERROR
 definitions:
-  LocationReport:
-    type: object
-    required:
-      - ring_sn
-      - cmd
-      - cmd_key
-      - longitude
-      - latitude
-      - timestamp
-      - type
-      - ring_response_code
-    properties:
-      ring_sn:
-        type: string
-        example: AAAAAAAAA
-        description: ring unique sn
-      cmd: 
-        type: integer
-        format: int32
-      cmd_key:
-        type: string
-      longitude:
-        type: number
-        format: double
-        example: 25.03
-        description: longitude
-      latitude:
-        type: number
-        format: double
-        example: 121.30
-        description: latitude
-      timestamp:
-        type: string
-        format: datetime
-      type:
-        type: string
-      ring_response_code:
-        type: string
   FenceDTO:
     type: object
     required:
       - end_time
+      - fence_name
       - latitude
       - longitude
       - radius
       - report_rate
-      - ring_name
       - start_time
     properties:
-      ring_name:
+      fence_name:
         type: string
-        example: ring_name
-        description: ring_name
+        example: fence_name
+        description: fence_name
       longitude:
         type: number
         format: double
@@ -450,71 +454,246 @@ definitions:
         type: string
         example: '18:00'
         description: end time
-  ResponseSuccessDTO:
+  LocationReportDTO:
     type: object
     required:
+      - data
       - message
-      - status_code
     properties:
-      status_code:
-        type: string
-        example: '000000'
-        description: '000000'
+      data:
+        $ref: '#/definitions/LocationReportBody'
       message:
         type: string
         example: success
         description: success
-  DemoDTO:
+  LoginBody:
     type: object
+    required:
+      - response_time
+      - ring_data
+      - user_data
     properties:
-      id:
-        type: integer
-        format: int64
-      name:
+      user_data:
+        $ref: '#/definitions/UserInfo'
+      ring_data:
+        $ref: '#/definitions/RingInfo'
+      response_time:
         type: string
-  RingInfo:
+        format: date-time
+        example: '2016-08-25T01:24:22Z'
+        description: server response time
+  LocationReport:
     type: object
+    required:
+      - cmd
+      - cmd_key
+      - latitude
+      - longitude
+      - record_time
+      - ring_response_code
+      - ring_sn
+      - type
     properties:
-      batter_power:
+      ring_sn:
+        type: string
+        example: '12345678901'
+        description: 手環序號
+      cmd:
         type: integer
         format: int32
+        example: 1
+        description: 手環命令
+        enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+      cmd_key:
+        type: string
+        example: 待定義
+        description: 手環命令PK
+      longitude:
+        type: number
+        format: double
+        example: 26.1234
+        description: longitude
+      latitude:
+        type: number
+        format: double
+        example: 28.5678
+        description: latitude
+      type:
+        type: string
+        example: 'gps, rrc_indooc, rrc_outdoor'
+        description: 定位資料模式
+      ring_response_code:
+        type: integer
+        format: int32
+        description: 定位失敗碼(0為成功 / 1為失敗)
+        enum:
+          - 0
+          - 1
+      record_time:
+        type: string
+        format: date-time
+        example: '2016-08-25T15:12:35Z'
+        description: 定位資料記錄時間
+  ResponseSuccessDTO:
+    type: object
+    required:
+      - data
+      - message
+    properties:
+      data:
+        $ref: '#/definitions/ResponseTime'
+      message:
+        type: string
+        example: success
+        description: success
+  LocationReportBody:
+    type: object
+    required:
+      - location_data
+      - response_time
+    properties:
+      location_data:
+        type: array
+        items:
+          $ref: '#/definitions/LocationReport'
+      response_time:
+        type: string
+        format: date-time
+        example: '2016-08-25T01:24:22Z'
+        description: server response time
+  RingInfoBody:
+    type: object
+    required:
+      - response_time
+      - ring_data
+    properties:
+      ring_data:
+        $ref: '#/definitions/RingInfo'
+      response_time:
+        type: string
+        format: date-time
+        example: '2016-08-25T01:24:22Z'
+        description: server response time
+  ResponseTime:
+    type: object
+    required:
+      - response_time
+    properties:
+      response_time:
+        type: string
+        format: date-time
+        example: '2016-08-25T01:24:22Z'
+        description: server response time
+  UserInfo:
+    type: object
+    required:
+      - client_id
+      - contact_number
+      - login_dt
+      - nickname
+      - owner_uid
+    properties:
+      owner_uid:
+        type: string
+        description: UID
+      client_id:
+        type: string
+        example: '12345678901'
+        description: client id
+      nickname:
+        type: string
+        description: nickname
       contact_number:
         type: string
+        description: 聯略電話
+      login_dt:
+        type: string
+        format: date-time
+        example: '2016-08-25T01:12:35Z'
+        description: 登入時間
+  LoginDTO:
+    type: object
+    required:
+      - data
+      - message
+    properties:
+      data:
+        $ref: '#/definitions/LoginBody'
+      message:
+        type: string
+        example: success
+        description: success
+  RingInfo:
+    type: object
+    required:
+      - batter_power
+      - firmware_update_flag
+      - firmware_version
+      - mode
+      - provision_status
+      - ring_name
+      - ring_sn
+    properties:
+      ring_name:
+        type: string
+        description: 手環名稱
+      ring_sn:
+        type: string
+        description: 手環序號
+      firmware_version:
+        type: string
+        description: 手環韌體版本
       firmware_update_flag:
         type: integer
         format: int32
-      firmware_version:
-        type: string
-      mode:
-        type: string
+        description: 手環韌體更新
+        enum:
+          - 0
+          - 1
+      batter_power:
+        type: integer
+        format: int32
+        description: 手環電量
+        enum:
+          - 5
+          - 25
+          - 50
+          - 75
+          - 100
       provision_status:
         type: string
-      ring_name:
+        example: activated
+        description: 手環開通狀態
+        enum:
+          - error(0)
+          - provisioning(1)
+          - activated(2)
+      mode:
         type: string
-      ring_sn:
-        type: string
-        
-  Error:
-    type: object
-    properties:
-      code:
-        type: integer
-      message:
-        type: string
-      
+        example: normal
+        description: 手環當前模式
+        enum:
+          - normal(0)
+          - fence(1)
+          - active(2)
+          - real-time(3)
   RingInfoDTO:
     type: object
     required:
       - data
       - message
-      - status_code
     properties:
-      status_code:
-        type: string
-        example: '000000'
-        description: '000000'
       data:
-        $ref: '#/definitions/RingInfo'
+        $ref: '#/definitions/RingInfoBody'
       message:
         type: string
         example: success
