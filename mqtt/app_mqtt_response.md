@@ -18,7 +18,7 @@ mqtt location messsage body
         失敗, 則Server會回傳最後(新)一筆的定位資料
     
     
-    mqtt format
+    mqtt response format
 
    
         {
@@ -48,7 +48,35 @@ mqtt location messsage body
                 // 1: 定位成功 / 0:定位失敗 => 定位失敗, 如手環有回傳訊息, 可是返回APP中, 其中某一環節.
             },
             "message" : "success" 
-        }
+        }    
+        
+       
+     mqtt cmd response format  
+     
+        {  
+            "data" : {  
+            
+                "ring_sn" : "ring_sn",   
+                // Ring unique Id  
+                
+                "cmd" : 1,  
+                //接受指令種類（gps, fence..etc)  
+                
+                "cmd_key" : "1qazxsw22",  
+                // 可以讓APP and ring 判別前後收到順序, 等和手環ODM討論過後, 再來決定.  
+                
+                "fence_no" : 1  // 1 ~ 5    
+                
+                "timestamp" : "2002-10-02T15:00:00Z",  
+                // String (RFC3339 normalize to UTC) => server get timestamp
+                
+                "ring_error_code" : 0  
+                // 1: 手環指令成功 / 0:手環指令失敗
+                
+            },  
+            "message" : "success"   
+        }    
+        
 
 
 4. 設定fence後回傳的response:
@@ -106,3 +134,15 @@ mqtt location messsage body
                 "err_meaasge" : "something error"
             } 
         }
+
+6. 定位狀態變換:
+
+    model = normal, active, fence
+
+---before web resp--after web resp---receive mqtt----- data flow status
+
+    gps -> idle -> busy -> idle, mode = normal
+    
+    active/on -> idle -> busy -> idle(active) 
+    
+    active/off -> idle -> busy(active) -> idle(normal)
