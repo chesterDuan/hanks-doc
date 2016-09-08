@@ -19,7 +19,7 @@ mqtt_cmd_list
     
     定時更新 return publish cmd   
     
-    MQTT cmd response Topic `hanks/app/{clientId}/cmd/{ringSN}/4`
+    MQTT cmd response Topic `hanks/app/{clientId}/cmd/{ringSN}`
      
         mos_publish -q 2 -t "hanks/app/clientId/location/routine/return/ringSN" -m "待定義"
         
@@ -27,7 +27,7 @@ mqtt_cmd_list
         
      定時更新: 定位資訊 cmd:
      
-     MQTT 定位資料 Topic `hanks/app/{clientId}/location/{ringSN}/4`
+     MQTT 定位資料 Topic `hanks/app/{clientId}/location/{ringSN}`
      
         mos_publish -r -q 2 -t "hanks/app/clientId/location/routine/ringSN" -m "待定義"
         
@@ -41,7 +41,7 @@ mqtt_cmd_list
    
       即時定位 return publish cmd(未確定)
       
-      MQTT cmd response Topic `hanks/app/{clientId}/cmd/{ringSN}/1`
+      MQTT cmd response Topic `hanks/app/{clientId}/cmd/{ringSN}`
      
         mos_publish -q 2 -t "hanks/app/clientId/location/gps/return/ringSN" -m "待定義"
         
@@ -79,6 +79,23 @@ mqtt_cmd_list
         mos_subscribe -c -i "clientId" -q 2 -t "hanks/app/clientId/location/active/ringSN"
     
    
-    
+4. 電子柵欄
+
+   新增/修改/刪除
+   
+   MQTT Topic: hanks/app/{clientId}/cmd/{ringSN}/
+   
+   超出電子柵欄: hanks/app/{clientId}/outfence/{ringSN}/
+   
+5. SOS
+   
+   
+   
+   
+   
+
+   
+
+
     Ring to AP (TODO)
     
