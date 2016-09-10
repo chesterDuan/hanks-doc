@@ -68,7 +68,7 @@ AP to APP MQTT 說明
                 
                 "timestamp" : "2016-08-02T15:00:00Z",
                 
-                "ring_error_code" : 0  // 0: 手環指令成功 / 1:手環指令失敗
+                "ring_response_code" : 0  // 0: 手環指令成功 / 1:手環指令失敗
                 
             }
         }  
@@ -121,7 +121,7 @@ AP to APP MQTT 說明
                 
                 "timestamp" : "2016-08-02T15:00:00Z",
                 
-                "ring_error_code" : 0  // 0: 手環指令成功 / 1:手環指令失敗
+                "ring_response_code" : 0  // 0: 手環指令成功 / 1:手環指令失敗
             }
         }  
    
@@ -172,7 +172,7 @@ AP to APP MQTT 說明
                 
                 "timestamp" : "2016-08-02T15:00:00Z",
                 
-                "ring_error_code" : 0  // 0: 手環指令成功 / 1:手環指令失敗
+                "ring_response_code" : 0  // 0: 手環指令成功 / 1:手環指令失敗
             }
         }  
 
@@ -192,11 +192,11 @@ AP to APP MQTT 說明
                 
                 "type_code" : "C3",        // 電子柵欄設定
                 
-                "fence_no" : 1           // 電子柵欄編號 1 ~ 5
+                "fence_no" : [1,2,3]           // 電子柵欄編號 1 ~ 5
                 
                 "timestamp" : "2016-08-02T15:00:00Z",
                 
-                "ring_error_code" : 0  // 0: 手環指令成功 / 1:手環指令失敗
+                "ring_response_code" : 0  // 0: 手環指令成功 / 1:手環指令失敗
             }
         } 
         
