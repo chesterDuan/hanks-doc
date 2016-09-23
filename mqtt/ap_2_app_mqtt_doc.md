@@ -16,6 +16,7 @@ AP to APP MQTT 說明
 > 4. 主動追踪OFF ack
 > 5. 電子柵欄 ack / location => 新增/編輯/刪除 ack 都一樣
 > 6. 超出電子柵欄 event => 無ack, 只有定位資訊 
+> 7. 登入資料 event => 確定uid正確後, 發出的login mqtt, 來達成踼除舊有裝置之event.
 
 1. 定時更新   
 
@@ -262,6 +263,27 @@ AP to APP MQTT 說明
                 "battery_power" : 100 
                 
                 "ring_response_code" : 0 // 0: 定位成功 / 1:定位失敗
+            },
+            "message" : "success" 
+        } 
+        
+7. 登入資料 event => 確定uid正確後, 發出的login mqtt, 來達成踼除舊有裝置之event.
+
+   > location topic: `hanks/app/{clientId}/event`
+
+        mos_publish -q 2 -t "hanks/app/{clientId}/event" -m "{請參考message_body}"
+        
+        mos_subscribe -c -i "{clientId}" -q 2 -t "hanks/app/{clientId}/event"  
+        
+   > event mqtt message body:
+    
+        {
+            "data" : {
+            
+                "phone_model" : "nexus_5x",  // 手機型號
+
+                "last_login" : "2016-09-22T15:16:35Z",
+                
             },
             "message" : "success" 
         } 
