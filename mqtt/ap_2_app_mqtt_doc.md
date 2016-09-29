@@ -281,6 +281,8 @@ AP to APP MQTT 說明
             "data" : {
             
                 "phone_model" : "nexus_5x",  // 手機型號
+                
+                "platform" : "android",
 
                 "last_login" : "2016-09-22T15:16:35Z",
                 
