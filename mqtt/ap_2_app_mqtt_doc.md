@@ -267,9 +267,9 @@ AP to APP MQTT 說明
             "message" : "success" 
         } 
         
-7. 登入資料 event => 確定uid正確後, 發出的login mqtt, 來達成踼除舊有裝置之event.
+7. 登入資料 forcelog => 確定uid正確後, 發出的login mqtt, 來達成踼除舊有裝置之動作.
 
-   > location topic: `hanks/app/{clientId}/forcelogout`
+   > forcelog topic: `hanks/app/{clientId}/forcelogout`
 
         mos_publish -q 2 -t "hanks/app/{clientId}/forcelogout" -m "{請參考message_body}"
         
