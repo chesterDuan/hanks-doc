@@ -269,11 +269,11 @@ AP to APP MQTT 說明
         
 7. 登入資料 event => 確定uid正確後, 發出的login mqtt, 來達成踼除舊有裝置之event.
 
-   > location topic: `hanks/app/{clientId}/event/forcelogout`
+   > location topic: `hanks/app/{clientId}/forcelogout`
 
-        mos_publish -q 2 -t "hanks/app/{clientId}/event" -m "{請參考message_body}"
+        mos_publish -q 2 -t "hanks/app/{clientId}/forcelogout" -m "{請參考message_body}"
         
-        mos_subscribe -c -i "{clientId}" -q 2 -t "hanks/app/{clientId}/event"  
+        mos_subscribe -c -i "{clientId}" -q 2 -t "hanks/app/{clientId}/forcelogout"  
         
    > event mqtt message body:
     
