@@ -80,7 +80,7 @@
          {
            "error": {
              "err_code": "000025",
-             "err_message": "ring captcha input number is invalid"
+             "err_message": "ring captcha input number is invalid, try the error 3 times."
            }
          }
 
