@@ -269,13 +269,13 @@ AP to APP MQTT 說明
         
 7. 登入資料 forcelog => 確定uid正確後, 發出的login mqtt, 來達成踼除舊有裝置之動作.
 
-   > forcelog topic: `hanks/app/{clientId}/forcelogout`
+     > forcelog topic: `hanks/app/{clientId}/forcelogout`
 
         mos_publish -q 2 -t "hanks/app/{clientId}/forcelogout" -m "{請參考message_body}"
         
         mos_subscribe -c -i "{clientId}" -q 2 -t "hanks/app/{clientId}/forcelogout"  
         
-   > event mqtt message body:
+    > event mqtt message body:
     
         {
             "data" : {
@@ -284,10 +284,31 @@ AP to APP MQTT 說明
                 
                 "platform" : "android",
                 
-                "app_ver" : 100
+                "app_ver" : 100,
 
                 "last_login" : "2016-09-22T15:16:35Z",
                 
             },
             "message" : "success" 
         } 
+        
+8. 虛擬門號 => 啟用成功(失敗)時, 所傳送的MQTT
+
+    > virtual number topic: hanks/app/{clientId}/cmd/{ringSN}
+   
+        mos_publish -q 2 -t "hanks/app/{clientId}/cmd/{ringSN}" -m "{請參考message_body}"
+        
+        mos_subscribe -c -i "{clientId}" -q 2 -t "hanks/app/{clientId}/cmd/{ringSN}
+   
+    > cmd mqtt message body:  
+    
+        {
+          data: {
+            ring_sn : ring_sn,
+            type_code : C0,    // 門號啟動相關
+            timestamp : "2016",
+            ring_response_code : ""
+          },
+          message : "success"
+        }
+   
