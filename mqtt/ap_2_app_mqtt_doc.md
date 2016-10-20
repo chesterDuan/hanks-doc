@@ -5,8 +5,8 @@ AP to APP MQTT 說明
 |----|----|----|----|
 |L0|定時更新|L1|電子柵欄|
 |L2|主動追踪|L3|即時定位|
-|C1|現在位址|C2|主動追踪開關|
-|C3|電子柵欄設定|||
+|C0|門號啟動相關|C1|現在位址|
+|C2|主動追踪開關|C3|電子柵欄設定|
 
 ----
 
@@ -304,10 +304,10 @@ AP to APP MQTT 說明
     
         {
           data: {
-            ring_sn : ring_sn,
+            ring_sn : 12345678901,
             type_code : C0,    // 門號啟動相關
-            timestamp : "2016",
-            ring_response_code : ""
+            timestamp : "2016-10-11T15:15:30Z",
+            ring_response_code : "0"
           },
           message : "success"
         }
