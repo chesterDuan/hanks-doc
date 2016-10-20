@@ -75,12 +75,24 @@
           }
         }
         
-6. 簡訊驗證碼輸入錯(待定義)
+6. 簡訊驗證碼輸入錯誤
 
-    > 輸入一次錯誤
+         {
+           "error": {
+             "err_code": "000025",
+             "err_message": "ring captcha input number is invalid"
+           }
+         }
 
-    > 輸入二次錯誤
+7. 簡訊驗證碼輸入錯誤超過3次
 
-    > 輸入三次錯誤
+         {
+           "error": {
+             "err_code": "000026",
+             "err_message": "ring captcha input invalided is over three times"
+           }
+         }
+
+
 
 7. 簡訊驗證碼顏率過高(待定義)
