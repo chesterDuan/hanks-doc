@@ -75,12 +75,12 @@
           }
         }
         
-6. 簡訊驗證碼輸入錯誤
+6. 簡訊驗證碼輸入錯誤:(開發階段會先把正確的驗證碼寫在err_message中, 但在簡訊串通後, 即會把此訊息拿掉.)
 
          {
            "error": {
              "err_code": "000025",
-             "err_message": "ring captcha input number is invalid, try the error 3 times."
+             "err_message": "{captcha}, ring captcha input number is invalid, try the error 3 times."
            }
          }
 
