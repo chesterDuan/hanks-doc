@@ -300,15 +300,42 @@ AP to APP MQTT 說明
         
         mos_subscribe -c -i "{clientId}" -q 2 -t "hanks/app/{clientId}/cmd/{ringSN}
    
-    > cmd mqtt message body:  
-    
-        {
-          data: {
-            ring_sn : 12345678901,
-            type_code : C0,    // 門號啟動相關
-            timestamp : "2016-10-11T15:15:30Z",
-            ring_response_code : "0"
-          },
-          message : "success"
+    > cmd mqtt message body (成功):  
+        
+         {
+            "data" : {
+                "ring_sn" : "ring_sn",    // Ring unique Id
+        
+                 type_code : C0,          // 手環啟動
+        
+                "longitude" : 25.12312,   // Double
+        
+                "latitude" :  26.12312,   // Double
+        
+                "timestamp" : "2002-10-02T15:00:00Z",
+        
+                "type" : "gps",           // String(gps/rrc_indoor/rrc_outdoor)
+        
+                "battery_power" : 100, 
+        
+                "ring_response_code" : 0 // 0: 啟用成功
+            },
+            "message" : "success" 
         }
-   
+        
+    > cmd mqtt message body (失敗):  
+        
+         {
+            "data" : {
+                "ring_sn" : "ring_sn",    // Ring unique Id
+        
+                 type_code : C0,          // 手環啟動
+        
+                "timestamp" : "2002-10-02T15:00:00Z",
+        
+                "ring_response_code" : 1 // 1:啟用失敗
+            },
+            "message" : "success" 
+        }
+        
+        

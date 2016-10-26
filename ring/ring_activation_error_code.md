@@ -75,14 +75,36 @@
           }
         }
         
-6. 簡訊驗證碼輸入錯誤:(開發階段會先把正確的驗證碼寫在err_message中, 但在簡訊串通後, 即會把此訊息拿掉.)
-
-         {
-           "error": {
-             "err_code": "000025",
-             "err_message": "{captcha}, ring captcha input number is invalid, try the error 3 times."
-           }
-         }
+6. 簡訊驗證碼輸入錯誤:(times為錯誤次數)
+         
+    1. 輸入錯誤1次
+    
+            {
+              "error": {
+                "err_code": "000030",
+                "err_message": "ring captcha input number is invalid, try the error 1 times."
+              }
+            }
+    
+    2.  輸入錯誤2次
+    
+            {
+              "error": {
+                "err_code": "000031",
+                "err_message": "ring captcha input number is invalid, try the error 2 times."
+              }
+            }
+    
+    
+    3.  輸入錯誤3次
+    
+            {
+              "error": {
+                "err_code": "000032",
+                "err_message": "ring captcha input number is invalid, try the error 3 times."
+              }
+            }
+    
 
 7. 簡訊驗證碼輸入錯誤超過3次
 
