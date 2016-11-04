@@ -72,7 +72,8 @@ Inbox Server Response Sample:
                 "end_time": "19:00",
                 "fence_no": 1
               }
-            ]
+            ],
+            "timestamp": "2016-10-12T15:30:15Z"
           }
         },
         {
@@ -95,7 +96,8 @@ Inbox Server Response Sample:
               "type": "gps",
               "battery_power": 100,
               "timestamp": "2016-10-15T15:30:15Z"
-            }
+            },
+            "timestamp": "2016-10-12T15:30:15Z"
           }
         },
         {
@@ -118,7 +120,8 @@ Inbox Server Response Sample:
               "type": "gps",
               "battery_power": 25,
               "timestamp": "2016-10-09T15:30:15Z"
-            }
+            },
+            "timestamp": "2016-10-12T15:30:15Z"
           }
         },
         {
@@ -141,7 +144,8 @@ Inbox Server Response Sample:
               "type": "gps",
               "battery_power": 5,
               "timestamp": "2016-10-09T15:30:15Z"
-            }
+            },
+            "timestamp": "2016-10-12T15:30:15Z"
           }
         },
         {
@@ -156,7 +160,8 @@ Inbox Server Response Sample:
             "firmware_update_flag": 1,
             "contact_number": "string",
             "create_time": "2016-10-09T15:30:15Z"
-          }
+          },
+          "timestamp": "2016-10-12T15:30:15Z"
         },
         {
           "id": 6,
@@ -170,7 +175,8 @@ Inbox Server Response Sample:
             "firmware_update_flag": 0,
             "contact_number": "string",
             "create_time": "2016-10-09T15:30:15Z"
-          }
+          },
+          "timestamp": "2016-10-12T15:30:15Z"
         },
         {
           "id": 7,
@@ -184,7 +190,8 @@ Inbox Server Response Sample:
             "firmware_update_flag": 1,
             "contact_number": "string",
             "create_time": "2016-10-09T15:30:15Z"
-          }
+          },
+          "timestamp": "2016-10-12T15:30:15Z"
         },
         {
           "id": 8,
@@ -198,7 +205,8 @@ Inbox Server Response Sample:
             "firmware_update_flag": 0,
             "contact_number": "string",
             "create_time": "2016-10-09T15:30:15Z"
-          }
+          },
+          "timestamp": "2016-10-12T15:30:15Z"
         },
         {
           "id": 9,
@@ -212,7 +220,8 @@ Inbox Server Response Sample:
             "firmware_update_flag": 0,
             "contact_number": "string",
             "create_time": "2016-10-09T15:30:15Z"
-          }
+          },
+          "timestamp": "2016-10-12T15:30:15Z"
         },
         {
           "id": 10,
@@ -226,7 +235,8 @@ Inbox Server Response Sample:
             "firmware_update_flag": 0,
             "contact_number": "string",
             "create_time": "2016-10-09T15:30:15Z"
-          }
+          },
+          "timestamp": "2016-10-12T15:30:15Z"
         }
       ],
       "message": "success"
