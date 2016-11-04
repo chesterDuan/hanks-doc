@@ -117,4 +117,40 @@
 
 
 
-7. 簡訊驗證碼顏率過高(待定義)
+8. 簡訊驗證碼頻率過高(如一分鐘內, 不可發request超過5次)
+
+
+         {
+           "error": {
+             "err_code": "000028",
+             "err_message": "http request is over the limit"
+           }
+         }
+         
+9. 手環數量超出上限
+
+         {
+           "error": {
+             "err_code": "000033",
+             "err_message": "ring count is equal 5"
+           }
+         }
+
+10. 手環正在開通中
+
+
+         {
+           "error": {
+             "err_code": "000034",
+             "err_message": "ring is provisioning"
+           }
+         }
+         
+11. 沒有手環資料
+         
+         {
+           "error": {
+             "err_code": "000035",
+             "err_message": "ring data is empty"
+           }
+         }
