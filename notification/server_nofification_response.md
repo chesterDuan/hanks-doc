@@ -4,7 +4,7 @@ INBOX 通知類型 Server Response 說明
 |Type|Description|Type|Description|
 |----|----|----|----|
 |out_of_fence|離開柵欄|sos|SOS通知(2)|
-|low_battrey.25|低電量通知(25%)|low_battery.5|低電量通知(5%)|
+|low_battery.25|低電量通知(25%)|low_battery.5|低電量通知(5%)|
 |firmware_upgrade.new|韌體更新通知|firmware_upgrade.success|韌體更新成功|
 |firmware_upgrade.fail|韌體更新失敗|no_signal|無訊號通知(6hr)|
 |app_upgrade.new|有APP更新項目|end_of_service|服務到期|
@@ -20,8 +20,8 @@ INBOX 通知類型 Server Response 說明
 |----|----|
 |out_of_fence|1|
 |sos|2|
-|low_battrey.25|3|
-|low_battrey.5|4|
+|low_battery.25|3|
+|low_battery.5|4|
 |firmware_upgrade.new|5|
 |firmware_upgrade.success|6|
 |firmware_upgrade.fail|7|
