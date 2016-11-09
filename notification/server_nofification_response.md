@@ -214,12 +214,18 @@ Inbox Server Response Sample:
           "is_read": 0,
           "messge": "APP有新版本",
           "extra": {
-            "ring_name": "ring_name",
-            "ring_sn": "12345678901",
-            "firmware_version": 100,
-            "firmware_update_flag": 0,
-            "contact_number": "string",
-            "create_time": "2016-10-09T15:30:15Z"
+            "uid": "string",
+            "nickname": "string",
+            "img_path": "string",
+            "platform": "android",
+            "ring_data": [{
+              "ring_name": "ring_name",
+              "ring_sn": "12345678901",
+              "firmware_version": 100,
+              "firmware_update_flag": 0,
+              "contact_number": "string",
+              "create_time": "2016-10-09T15:30:15Z"
+            }]
           },
           "timestamp": "2016-10-12T15:30:15Z"
         },
