@@ -1,6 +1,14 @@
 INBOX 通知類型 Server Response 說明
 ==
 
+> 2016.11.16 特別說明
+> 在下星期三恩平回來前, 
+> 會先把 type = app_upgrade.new, extra key 改為 upgrade_data 
+> 其餘 type 的 extra 則改為 ring_data
+> 但在格式確認前會新舊並存
+
+---
+
 |Type|Description|Type|Description|
 |----|----|----|----|
 |out_of_fence|離開柵欄|sos|SOS通知(2)|
@@ -48,9 +56,10 @@ Inbox Server Response Sample:
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
-            "firmware_update_flag": 0,
+            "firmware_upgrade_flag": 0,
             "img_path": "string",
             "contact_number": "string",
+            "provision_status": "activated",
             "create_time": "2016-10-09T15:30:15Z",
             "last_location": {
               "ring_sn": "ring_name",
@@ -85,8 +94,9 @@ Inbox Server Response Sample:
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
-            "firmware_update_flag": 0,
+            "firmware_upgrade_flag": 0,
             "contact_number": "string",
+            "provision_status": "activated",
             "create_time": "2016-10-09T15:30:15Z",
             "last_location": {
               "ring_sn": "ring_sn",
@@ -109,8 +119,9 @@ Inbox Server Response Sample:
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
-            "firmware_update_flag": 0,
+            "firmware_upgrade_flag": 0,
             "contact_number": "string",
+            "provision_status": "activated",
             "create_time": "2016-10-09T15:30:15Z",
             "last_location": {
               "ring_sn": "ring_name",
@@ -133,8 +144,9 @@ Inbox Server Response Sample:
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
-            "firmware_update_flag": 0,
+            "firmware_upgrade_flag": 0,
             "contact_number": "string",
+            "provision_status": "activated",
             "create_time": "2016-10-09T15:30:15Z",
             "last_location": {
               "ring_sn": "ring_name",
@@ -157,8 +169,9 @@ Inbox Server Response Sample:
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
-            "firmware_update_flag": 1,
+            "firmware_upgrade_flag": 1,
             "contact_number": "string",
+            "provision_status": "activated",
             "create_time": "2016-10-09T15:30:15Z"
           },
           "timestamp": "2016-10-12T15:30:15Z"
@@ -172,8 +185,9 @@ Inbox Server Response Sample:
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
-            "firmware_update_flag": 0,
+            "firmware_upgrade_flag": 0,
             "contact_number": "string",
+            "provision_status": "activated",
             "create_time": "2016-10-09T15:30:15Z"
           },
           "timestamp": "2016-10-12T15:30:15Z"
@@ -187,8 +201,9 @@ Inbox Server Response Sample:
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
-            "firmware_update_flag": 1,
+            "firmware_upgrade_flag": 1,
             "contact_number": "string",
+            "provision_status": "activated",
             "create_time": "2016-10-09T15:30:15Z"
           },
           "timestamp": "2016-10-12T15:30:15Z"
@@ -202,8 +217,9 @@ Inbox Server Response Sample:
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
-            "firmware_update_flag": 0,
+            "firmware_upgrade_flag": 0,
             "contact_number": "string",
+            "provision_status": "activated",
             "create_time": "2016-10-09T15:30:15Z"
           },
           "timestamp": "2016-10-12T15:30:15Z"
@@ -222,8 +238,9 @@ Inbox Server Response Sample:
               "ring_name": "ring_name",
               "ring_sn": "12345678901",
               "firmware_version": 100,
-              "firmware_update_flag": 0,
+              "firmware_upgrade_flag": 0,
               "contact_number": "string",
+              "provision_status": "activated",
               "create_time": "2016-10-09T15:30:15Z"
             }]
           },
@@ -238,8 +255,9 @@ Inbox Server Response Sample:
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
-            "firmware_update_flag": 0,
+            "firmware_upgrade_flag": 0,
             "contact_number": "string",
+            "provision_status": "activated",
             "create_time": "2016-10-09T15:30:15Z"
           },
           "timestamp": "2016-10-12T15:30:15Z"
