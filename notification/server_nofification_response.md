@@ -60,6 +60,7 @@ Inbox Server Response Sample:
             "img_path": "string",
             "contact_number": "string",
             "provision_status": "activated",
+            "mode": "normal",
             "create_time": "2016-10-09T15:30:15Z",
             "last_location": {
               "ring_sn": "ring_name",
@@ -97,6 +98,7 @@ Inbox Server Response Sample:
             "firmware_upgrade_flag": 0,
             "contact_number": "string",
             "provision_status": "activated",
+            "mode": "normal",
             "create_time": "2016-10-09T15:30:15Z",
             "last_location": {
               "ring_sn": "ring_sn",
@@ -122,6 +124,7 @@ Inbox Server Response Sample:
             "firmware_upgrade_flag": 0,
             "contact_number": "string",
             "provision_status": "activated",
+            "mode": "normal",
             "create_time": "2016-10-09T15:30:15Z",
             "last_location": {
               "ring_sn": "ring_name",
@@ -147,6 +150,7 @@ Inbox Server Response Sample:
             "firmware_upgrade_flag": 0,
             "contact_number": "string",
             "provision_status": "activated",
+            "mode": "normal",
             "create_time": "2016-10-09T15:30:15Z",
             "last_location": {
               "ring_sn": "ring_name",
@@ -172,6 +176,7 @@ Inbox Server Response Sample:
             "firmware_upgrade_flag": 1,
             "contact_number": "string",
             "provision_status": "activated",
+            "mode": "normal",
             "create_time": "2016-10-09T15:30:15Z"
           },
           "timestamp": "2016-10-12T15:30:15Z"
@@ -188,6 +193,7 @@ Inbox Server Response Sample:
             "firmware_upgrade_flag": 0,
             "contact_number": "string",
             "provision_status": "activated",
+            "mode": "normal",
             "create_time": "2016-10-09T15:30:15Z"
           },
           "timestamp": "2016-10-12T15:30:15Z"
@@ -204,6 +210,7 @@ Inbox Server Response Sample:
             "firmware_upgrade_flag": 1,
             "contact_number": "string",
             "provision_status": "activated",
+            "mode": "normal",
             "create_time": "2016-10-09T15:30:15Z"
           },
           "timestamp": "2016-10-12T15:30:15Z"
@@ -220,6 +227,7 @@ Inbox Server Response Sample:
             "firmware_upgrade_flag": 0,
             "contact_number": "string",
             "provision_status": "activated",
+            "mode": "normal",
             "create_time": "2016-10-09T15:30:15Z"
           },
           "timestamp": "2016-10-12T15:30:15Z"
@@ -241,6 +249,7 @@ Inbox Server Response Sample:
               "firmware_upgrade_flag": 0,
               "contact_number": "string",
               "provision_status": "activated",
+              "mode": "normal",
               "create_time": "2016-10-09T15:30:15Z"
             }]
           },
@@ -258,6 +267,7 @@ Inbox Server Response Sample:
             "firmware_upgrade_flag": 0,
             "contact_number": "string",
             "provision_status": "activated",
+            "mode": "normal",
             "create_time": "2016-10-09T15:30:15Z"
           },
           "timestamp": "2016-10-12T15:30:15Z"
