@@ -154,3 +154,12 @@
              "err_message": "ring data is empty"
            }
          }
+
+12. 手環服務到期
+
+         {
+           "error": {
+             "err_code": "000038",
+             "err_message": "ring is end of service"
+           }
+         }
