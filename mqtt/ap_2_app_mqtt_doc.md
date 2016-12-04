@@ -7,6 +7,7 @@ AP to APP MQTT 說明
 |L2|主動追踪|L3|即時定位|
 |C0|門號啟動相關|C1|現在位址|
 |C2|主動追踪開關|C3|電子柵欄設定|
+|C5|手環軔體更新||
 
 ----
 
@@ -17,6 +18,8 @@ AP to APP MQTT 說明
 > 5. 電子柵欄 ack / location => 新增/編輯/刪除 ack 都一樣
 > 6. 超出電子柵欄 event => 無ack, 只有定位資訊 
 > 7. 登入資料 event => 確定uid正確後, 發出的login mqtt, 來達成踼除舊有裝置之event.
+> 8. 虛擬門號 => 啟用成功(失敗)時, 所傳送的MQTT
+> 9. 手環軔體更新 => 手環軔體更新成功 or 失敗通知
 
 1. 定時更新   
 
@@ -53,7 +56,7 @@ AP to APP MQTT 說明
 
     > ack topic: `hanks/app/{clientId}/cmd/{ringSN}`
      
-        mos_publish -q 2 -t "hanks/app/{clientId}/location/cmd/{ringSN}" -m "{....}"
+        mos_publish -q 2 -t "hanks/app/{clientId}/cmd/{ringSN}" -m "{....}"
         
         mos_subscribe -c -i "{clientId}" -q 2 -t "hanks/app/{clientId}/location/cmd/{ringSN}"
         
@@ -108,7 +111,7 @@ AP to APP MQTT 說明
 
     > ack topic: `hanks/app/{clientId}/cmd/{ringSN}`
 
-        mos_publish -q 2 -t "hanks/app/{clientId}/location/cmd/{ringSN}" -m "{....}"
+        mos_publish -q 2 -t "hanks/app/{clientId}/cmd/{ringSN}" -m "{....}"
         
         mos_subscribe -c -i "{clientId}" -q 2 -t "hanks/app/{clientId}/location/cmd/{ringSN}"
    
@@ -159,7 +162,7 @@ AP to APP MQTT 說明
 
     > ack topic: `hanks/app/{clientId}/cmd/{ringSN}`
 
-        mos_publish -q 2 -t "hanks/app/{clientId}/location/cmd/{ringSN}" -m "{....}"
+        mos_publish -q 2 -t "hanks/app/{clientId}/cmd/{ringSN}" -m "{....}"
         
         mos_subscribe -c -i "{clientId}" -q 2 -t "hanks/app/{clientId}/location/cmd/{ringSN}"
    
@@ -181,7 +184,7 @@ AP to APP MQTT 說明
 
     > ack topic: `hanks/app/{clientId}/cmd/{ringSN}`
 
-        mos_publish -q 2 -t "hanks/app/{clientId}/location/cmd/{ringSN}" -m "{.....}"
+        mos_publish -q 2 -t "hanks/app/{clientId}/cmd/{ringSN}" -m "{.....}"
         
         mos_subscribe -c -i "{clientId}" -q 2 -t "hanks/app/{clientId}/location/cmd/{ringSN}"
    
@@ -338,4 +341,28 @@ AP to APP MQTT 說明
             "message" : "success" 
         }
         
+9. 手環軔體更新 => 手環軔體更新成功 or 失敗通知
+
+     > firmware upgrade topic: `hanks/app/{clientId}/cmd/{ringSN}`
+     
+        mos_publish -q 2 -t "hanks/app/{clientId}/cmd/{ringSN}" -m "{....}"
         
+        mos_subscribe -c -i "{clientId}" -q 2 -t "hanks/app/{clientId}/cmd/{ringSN}"
+        
+     
+     > mqtt message body:
+     
+        {  
+            "data" : {  
+            
+                "ring_sn" : "ring_sn",   // Ring unique Id  
+                
+                "type_code" : "C5",         // 接受指令種類  
+                
+                "timestamp" : "2016-08-02T15:00:00Z",
+                
+                "ring_response_code" : 0  // 0: 手環軔體更新成功 / 1: 軔體更新失敗(手環電量過低) / 2: 軔體更新失敗(其它錯誤)
+                
+            }
+        }  
+     

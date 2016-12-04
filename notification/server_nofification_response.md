@@ -52,7 +52,7 @@ Inbox Server Response Sample:
           "type": "out_of_fence",
           "is_read": -1,
           "message": "{ring_name}在{time}離開柵欄",
-          "extra": {
+          "ring_data": {
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
@@ -91,7 +91,7 @@ Inbox Server Response Sample:
           "type": "sos",
           "is_read": -1,
           "messge": "{ring_name}發出SOS通知",
-          "extra": {
+          "ring_data": {
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
@@ -117,7 +117,7 @@ Inbox Server Response Sample:
           "type": "low_battery.25",
           "is_read": 0,
           "messge": "{ring_name}電量低於25%",
-          "extra": {
+          "ring_data": {
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
@@ -143,7 +143,7 @@ Inbox Server Response Sample:
           "type": "low_battery.5",
           "is_read": 0,
           "messge": "{ring_name}電量低於5%",
-          "extra": {
+          "ring_data": {
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
@@ -169,7 +169,7 @@ Inbox Server Response Sample:
           "type": "firmware_upgrade.new",
           "is_read": 0,
           "messge": "{ring_name}有新版韌體更新",
-          "extra": {
+          "ring_data": {
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
@@ -186,7 +186,7 @@ Inbox Server Response Sample:
           "type": "firmware_upgrade.success",
           "is_read": 0,
           "messge": "{ring_name}有新版韌體更新成功",
-          "extra": {
+          "ring_data": {
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
@@ -203,7 +203,7 @@ Inbox Server Response Sample:
           "type": "firmware_upgrade.fail",
           "is_read": 0,
           "messge": "{ring_name}有新版韌體更新失敗",
-          "extra": {
+          "ring_data": {
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
@@ -220,7 +220,7 @@ Inbox Server Response Sample:
           "type": "no_signal",
           "is_read": 0,
           "messge": "{ring_name}無訊號已超超過6小時",
-          "extra": {
+          "ring_data": {
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
@@ -228,7 +228,16 @@ Inbox Server Response Sample:
             "contact_number": "string",
             "provision_status": "activated",
             "mode": "normal",
-            "create_time": "2016-10-09T15:30:15Z"
+            "create_time": "2016-10-09T15:30:15Z",
+            "last_location": {
+              "ring_sn": "ring_name",
+              "type_code": "L0",
+              "longitude": 25.123123,
+              "latitude": 102.12312312,
+              "type": "gps",
+              "battery_power": 5,
+              "timestamp": "2016-10-09T15:30:15Z"
+            }
           },
           "timestamp": "2016-10-12T15:30:15Z"
         },
@@ -237,7 +246,7 @@ Inbox Server Response Sample:
           "type": "app_upgrade.new",
           "is_read": 0,
           "messge": "APP有新版本",
-          "extra": {
+          "upgrade_data": {
             "uid": "string",
             "nickname": "string",
             "img_path": "string",
@@ -260,7 +269,7 @@ Inbox Server Response Sample:
           "type": "end_of_service",
           "is_read": 0,
           "messge": "{ring_name}服務到期",
-          "extra": {
+          "ring_data": {
             "ring_name": "ring_name",
             "ring_sn": "12345678901",
             "firmware_version": 100,
