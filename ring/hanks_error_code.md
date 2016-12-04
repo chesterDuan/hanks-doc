@@ -195,3 +195,15 @@ HANKS ERROR CODE 說明
             "err_message": "query parameter error"
           }
         }
+        
+4. 手環狀態忙碌中
+
+        {
+          "error": {
+            "err_code": "000029",
+            "err_message": "ring status is busy"
+          }
+        }
+
+
+
