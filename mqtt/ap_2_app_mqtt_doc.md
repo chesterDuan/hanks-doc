@@ -365,4 +365,26 @@ AP to APP MQTT 說明
                 
             }
         }  
-     
+
+      > event firmware topic: `hanks/app/{clientId}/event`
+
+        mos_publish -q 2 -t "hanks/app/{clientId}/event/{ringSN}" -m "{參考_即時定位_location_data}"
+        
+        mos_subscribe -c -i "{clientId}" -q 2 -t "hanks/app/{clientId}/event/{ringSN}"
+    
+      > event firmware mqtt message body:
+    
+        {
+            "data" : {
+                "ring_sn" : "ring_sn",   // Ring unique Id  
+                
+                "type_code" : "C5",         // 接受指令種類  
+                
+                "timestamp" : "2016-08-02T15:00:00Z",
+                
+                "ring_response_code" : 0  // 0: 手環軔體更新成功 / 1: 軔體更新失敗(手環電量過低) / 2: 軔體更新失敗(其它錯誤)
+            },
+            "message" : "success" 
+        } 
+        
+        

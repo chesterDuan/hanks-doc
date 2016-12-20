@@ -3,7 +3,7 @@
 
 1. 手環輸入資料不正碼
 
-    > 手環名稱為空值
+    > 手環名稱為空值 `http status = 400`
 
         {
           "error": {
@@ -12,7 +12,7 @@
           }
         }
 
-    > 手環名稱長度(UTF-8), 中文10個字, 英文30個字. 
+    > 手環名稱長度(UTF-8), 中文10個字, 英文30個字. `http status = 400`
 
         {
           "error": {
@@ -21,7 +21,7 @@
           }
         }
         
-    > 手機號碼為空值
+    > 手機號碼為空值 `http status = 400`
 
         {
           "error": {
@@ -30,7 +30,7 @@
           }
         }
         
-    > 手環序號為空值
+    > 手環序號為空值 `http status = 400`
 
         {
           "error": {
@@ -39,7 +39,7 @@
           }
         }
     
-2. 手環序號規則錯誤
+2. 手環序號規則錯誤 `http status = 400`
 
         {
           "error": {
@@ -48,7 +48,7 @@
           }
         }
 
-3. 手環是否已被啟用過
+3. 手環是否已被啟用過 `http status = 400`
 
         {
           "error": {
@@ -57,7 +57,7 @@
           }
         }
 
-4. 手環是否已被其它帳號綁定
+4. 手環是否已被其它帳號綁定 `http status = 400`
 
         {
           "error": {
@@ -66,7 +66,7 @@
           }
         }
 
-5. 驗證碼輸入時間超過10分內
+5. 驗證碼輸入時間超過10分內 `http status = 400`
 
         {
           "error": {
@@ -77,7 +77,7 @@
         
 6. 簡訊驗證碼輸入錯誤:(times為錯誤次數)
          
-    1. 輸入錯誤1次
+    1. 輸入錯誤1次 `http status = 400`
     
             {
               "error": {
@@ -86,7 +86,7 @@
               }
             }
     
-    2.  輸入錯誤2次
+    2.  輸入錯誤2次 `http status = 400`
     
             {
               "error": {
@@ -96,7 +96,7 @@
             }
     
     
-    3.  輸入錯誤3次
+    3.  輸入錯誤3次 `http status = 400`
     
             {
               "error": {
@@ -106,7 +106,7 @@
             }
     
 
-7. 簡訊驗證碼輸入錯誤超過3次
+7. 簡訊驗證碼輸入錯誤超過3次 `http status = 400`
 
          {
            "error": {
@@ -117,7 +117,7 @@
 
 
 
-8. 簡訊驗證碼頻率過高(如一分鐘內, 不可發request超過5次)
+8. 簡訊驗證碼頻率過高(如一分鐘內, 不可發request超過5次) `http status = 503`
 
 
          {
@@ -127,7 +127,7 @@
            }
          }
          
-9. 手環數量超出上限
+9. 手環數量超出上限 `http status = 400`
 
          {
            "error": {
@@ -136,7 +136,7 @@
            }
          }
 
-10. 手環正在開通中
+10. 手環正在開通中 `http status = 400`
 
 
          {
@@ -146,7 +146,7 @@
            }
          }
          
-11. 沒有手環資料
+11. 沒有手環資料 `http status = 400`
          
          {
            "error": {
@@ -155,7 +155,7 @@
            }
          }
 
-12. 手環服務到期
+12. 手環服務到期 `http status = 400`
 
          {
            "error": {
@@ -167,7 +167,7 @@
 HANKS ERROR CODE 說明
 ==
 
-1. 手環電量低於75%, 無法執行軔體更新.
+1. 手環電量低於75%, 無法執行軔體更新. `http status = 400`
 
         {
           "error": {
@@ -177,7 +177,7 @@ HANKS ERROR CODE 說明
         }
         
         
-2. API缺少查詢參數
+2. API缺少查詢參數 `http status = 400`
 
         {
           "error": {
@@ -187,7 +187,7 @@ HANKS ERROR CODE 說明
         }
         
         
-3. API查詢參數錯誤
+3. API查詢參數錯誤 `http status = 400`
 
         {
           "error": {
@@ -196,7 +196,7 @@ HANKS ERROR CODE 說明
           }
         }
         
-4. 手環狀態忙碌中
+4. 手環狀態忙碌中 `http status = 400`
 
         {
           "error": {
@@ -206,4 +206,54 @@ HANKS ERROR CODE 說明
         }
 
 
+URL Signature Error Code 說明
+===
 
+1. 執行API時, 使用者UID不存在 `http status = 401`
+
+        {
+          "error": {
+            "err_code": "000003",
+            "err_message": "UID is not exist"
+          }
+        }
+        
+2. 執行API時, 如果使用者已經登出 `http status = 401`
+
+        {
+          "error": {
+            "err_code": "000050",
+            "err_message": "UID had been logout"
+          }
+        }
+
+3. API Request Header 中, 不包含有  
+   `authorization: Basic 1481686309275:BfZFT0fVN2C5osq/Vj/7CqLtmKw=`  
+   或者是其資料格式錯誤 `http status = 401`
+   
+
+        {
+          "error": {
+            "err_code": "000047",
+            "err_message": "authorization data format error in request header"
+          }
+        }
+
+4. Server所算出的url signature和App算出來的不同 `http status = 401`
+
+        {
+          "error": {
+            "err_code": "000049",
+            "err_message": "url signature no match"
+          }
+        }
+
+5. API Request Header authorization 所帶的`timestamp`逾期超過1分鐘才傳送到Server   
+   `http status = 400`
+
+        {
+          "error": {
+            "err_code": "000048",
+            "err_message": "request time expired"
+          }
+        }
