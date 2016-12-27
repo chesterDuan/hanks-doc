@@ -204,7 +204,26 @@ HANKS ERROR CODE 說明
             "err_message": "ring status is busy"
           }
         }
+        
+5. 簡訊發送錯誤 `http status = 400`
 
+        {
+          "error": {
+            "err_code": "000039",
+            "err_message": "send sms fail"
+          }
+        }
+
+6. APP版本過舊, 需更制更新 `http status = 400`
+
+        {
+          "error": {
+            "err_code": "000051",
+            "err_message": "app version is too old"
+          }
+        }
+
+   
 
 URL Signature Error Code 說明
 ===
